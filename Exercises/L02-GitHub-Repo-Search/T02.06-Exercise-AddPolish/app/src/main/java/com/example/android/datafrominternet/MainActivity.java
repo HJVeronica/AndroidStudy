@@ -18,6 +18,7 @@ package com.example.android.datafrominternet;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String githubSearchResults) {
             mLoadingIndicator.setVisibility(View.INVISIBLE);
-            if (githubSearchResults != null && !githubSearchResults.equals("")) {
+            if (TextUtils.isEmpty(githubSearchResults)) {
                 showJsonDataView();
                 mSearchResultsTextView.setText(githubSearchResults);
             }
